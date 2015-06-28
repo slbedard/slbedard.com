@@ -1,0 +1,387 @@
+
+/*** LAYOUT ***/
+
+body {
+	background: white;
+  font-family: 'Open Sans', sans-serif;
+	text-align: center;
+}
+
+.container {
+  width: 1020px;
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-bottom: 200px;
+  margin: 0 auto;
+}
+
+.mobile-container {
+  display:none;
+
+  h1 {
+    margin-top: 100px;
+    line-height: 30px;
+  }
+
+  p {
+    line-height: 30px;
+  }
+
+  .mobile-footer {
+    position: absolute;
+    bottom: 0px;
+    text-align: center;
+  }
+
+}
+
+
+@mixin aspect-ratio($ratio-or-width, $height: null) {
+  $padding: if($height, percentage($height/$ratio-or-width), percentage(1/$ratio-or-width));
+  &:before { content:''; float: left; padding-bottom: $padding;  }
+  &:after  { content:''; display: table; clear: both;  } 
+}
+
+
+@media (max-width: 600px) {
+ .container {
+  width: 300px;
+  margin: 0 auto;
+  margin-top: 300px;
+  display:none;
+}
+
+  .mobile-container {
+    display:block;
+  }
+
+}
+
+
+
+#detail {
+  background: #333;
+  width: 99%;
+  min-height: 600px;
+  display:none;
+  padding-bottom: 60px;
+  margin-bottom: 100px;
+
+  .project-wrapper {
+    width: 800px;
+    padding-top: 60px;
+    margin-left: 40px;
+  }
+
+
+
+  .close {
+    height: 50px;
+    width: 50px;
+    float: right;
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    margin-right: 5px;
+    margin-top: 5px;
+  }
+
+  .project-description {
+    width:300px;
+    text-align: left;
+    float:left;
+    display: inline-block;
+    color: #ccc;
+
+    h1 {
+      font-size: 20px;
+      line-height: 28px;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: white
+    }
+
+    h2 {
+      font-size: 20px;
+      line-height: 28px;
+    }
+
+    p {
+      padding-top: 10px;
+      line-height: 28px;
+    }
+
+    a {
+      font-size: 20px;
+      line-height: 28px;
+      text-decoration:none;
+      color: white;
+    }
+
+  }
+
+  .project-screens {
+    width: 400px;
+    height: 200px;
+    background: red;
+    float: left;
+    margin-left: 60px;
+    display: inline-block;
+  }
+
+}
+
+
+
+
+
+/*** NAV ***/
+
+.top-nav {
+  //width: 95%;
+  margin-left: 0px;
+  margin-right: 0px;  
+  background: white;
+  height: 130px;
+  color: black;
+  text-align: left;
+  box-sizing: border-box;
+  position: relative;
+
+  h1 {
+    font-size: 36px;
+    margin-top: 40px;
+    text-align: left;
+    text-transform: uppercase;
+    line-height: 130px;
+    display:inline;
+    font-weight: 800;
+    color: #111;
+    padding-left: 2px;
+  }
+
+  .sub-nav {
+    display:inline-block;
+    height: 50px;
+    position: absolute;
+    top: 60px;
+
+    p {
+      text-align: left;
+      display:inline;
+      font-size: 12px;
+      color: #666;
+      padding-left: 30px;
+    }
+
+    a {
+      text-align: left;
+      display:inline;
+      font-size: 12px;
+      color: #666;
+      padding-left: 30px;
+      text-decoration: none;
+    }
+
+  }
+
+}
+
+
+/*** TILES ***/
+
+
+.box {
+  //@include aspect-ratio(16,9);
+  //@include aspect-ratio(1.777777778);  
+  //@include aspect-ratio(1.5);  
+  background:white;
+  width:32%;
+  float: left;
+  border:5px solid white;
+  background-size: cover; 
+  
+  p { 
+  font:12px sans-serif; color:#fff; padding:1rem; margin:0; 
+  }
+}
+
+
+.box-spacer {
+  @include aspect-ratio(1.5);  
+  background:white;
+  width:32%;
+  float: left;
+  border:5px solid white;
+  background-size: cover; 
+  height: 80px;
+}
+
+
+.logo-cover {
+  @include aspect-ratio(1.2);  
+  background-size: cover; 
+  cursor:pointer;
+  .details {
+    display:none;
+  }
+}
+
+
+.cover {
+  @include aspect-ratio(1.2);  
+  background-size: cover; 
+  background: rgba(0,0,0,0.3);
+  cursor:pointer;
+
+  .details {
+    display:none;
+  }
+
+}
+
+
+.box:hover {
+  .cover {
+    background: rgba(0,0,0,1.0);
+  }
+
+  .title {
+    color: rgba(255,255,255,1.0);
+    text-align: left;
+    display:none;
+  }
+
+  .details {
+    display:block;
+    overflow: scroll;
+  
+    h2 {
+    font-weight: 800;
+    color: white;
+    font-size: 26px;
+    text-align: center;
+    padding-top: 120px;
+    box-sizing: border-box;
+    }
+
+  }
+
+}
+
+.title {
+  text-align: left;
+  font-size: 26px;
+  line-height: 36px;
+  text-transform: uppercase;
+  padding: 10px;
+  //padding-top: 100px;
+  //text-align: center;
+  font-weight: 800;
+  color: rgba(255,255,255,0.9);  
+  color: white;
+}
+
+
+/*** PROJECTS ***/
+
+.giphy {
+  background: url('http://i.giphy.com/e47Hf9do5kgKI.gif') no-repeat center center;
+  background-size: cover;
+}
+
+.betaworks {
+  background: #FF0000;
+  background: url('http://i.giphy.com/11CZgTwa28f6vu.gif') no-repeat center center;
+  background-size: cover;
+}
+
+.swirl {
+  background-size: cover;
+  background: url('../img/swirl.jpg') no-repeat center center;
+}
+
+.turntable {
+  background: url('../img/turntable.gif') no-repeat center center;
+  background-size: cover;
+}
+
+.stickybits {
+  background: url('http://i.giphy.com/NtqNud2LH6Kje.gif') no-repeat center center;
+  background-size: cover;
+}
+
+.ifym {
+  background-size: cover;
+  background: url('../img/mitten3.jpg') no-repeat center center;
+}
+
+.backchannel {
+  background: url('http://i.giphy.com/nj6P3nyBoJzFe.gif');
+  background-size: cover;
+}
+
+.tiptop {
+  background-size: cover;
+  background: url('../img/pizza2.gif') no-repeat center center;
+}
+
+.trigr {
+  background-size: cover;
+  background: url('../img/trigr1.jpg') no-repeat center center;
+}
+
+.sharkbites {
+  background: url('http://i.giphy.com/SZzKe0HhRlthC.gif');
+  background-size: cover;
+}
+
+.humanrace {
+  background: url('http://i.giphy.com/XJzlSfuuX1qI8.gif');
+  background-size: cover;
+}
+
+.jesusvsatan {
+  background-size: cover;
+  background: url('../img/devil.jpg') no-repeat center center;
+}
+
+
+/*** COMPANIES ***/
+
+.samsung {
+  background-size: cover;
+  background: url('../img/samsung_accel.png') no-repeat center center;
+}
+
+.betaworks-comp {
+  background-size: cover;
+  background: url('../img/betaworks.png') no-repeat center center;
+}
+
+.giphy-comp {
+  background: url('../img/giphy4.png') no-repeat center center;
+  background-size: cover;
+}
+
+
+
+
+
+
+
+.clear { clear: both; }
+
+
+
+
+
+
+
+
+
+
+
+
+
